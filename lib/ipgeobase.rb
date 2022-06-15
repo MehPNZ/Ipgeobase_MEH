@@ -7,12 +7,12 @@ require 'net/http'
 # DEGIN
 
 module Ipgeobase
-  CURL = 'http://ip-api.com/xml/'
+  URL = 'http://ip-api.com/xml/'
 
   class Error < StandardError; end
 
-  def self.lookup(adress)
-    ip_adress = Addressable::URI.parse("#{CURL}#{adress}")
+  def self.lookup(ip)
+    ip_adress = Addressable::URI.parse("#{URL}#{ip}")
     res = Net::HTTP.get(ip_adress)
     MetaIp.parse(res)
   end
